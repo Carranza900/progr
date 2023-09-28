@@ -232,3 +232,5 @@ class Program
         } while (Console.ReadLine()?.Trim().ToLower() == "s");
 
         Console.Clear(); // Limpiar la pantalla antes de salir de la función
+         }
+}
