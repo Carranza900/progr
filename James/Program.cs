@@ -144,3 +144,34 @@ class Program
         } while (Console.ReadLine()?.Trim().ToLower() == "s");
 
         Console.Clear(); // Limpiar la pantalla antes de salir de la función
+        }
+    static void NumerosPrimos()
+    {
+        do
+        {
+            Console.Clear(); // Limpiar la pantalla
+            Console.Write("Ingrese la cantidad de iteraciones para las operaciones de numeros primos: ");
+            string? input = Console.ReadLine();
+            if (!string.IsNullOrEmpty(input) && int.TryParse(input, out int numero))
+            {
+                Console.WriteLine("Números primos en orden inverso: ");
+                for (int i = numero; i >= 2; i--)
+                {
+                   if (EsPrimo(i))
+                        Console.Write(i + " ");
+                }
+                Console.WriteLine();
+
+                var numerosPrimos = Enumerable.Range(2, numero - 1).Where(EsPrimo);
+                double media = numerosPrimos.Average();
+                double factorialMedia = FactorialDe(media);
+                Console.WriteLine($"Media de los números primos: {media}");
+                Console.WriteLine($"Factorial de la media {media} es: {factorialMedia}");
+            }
+            else
+            {
+                Console.WriteLine("Entrada no válida. Por favor, ingrese un número entero positivo.");
+            }
+
+            Console.Write("¿Desea realizar otra operación en Números Primos? (s/n): ");
+        } while (Console.ReadLine()?.Trim().ToLower() == "s");
