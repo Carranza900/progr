@@ -175,3 +175,60 @@ class Program
 
             Console.Write("¿Desea realizar otra operación en Números Primos? (s/n): ");
         } while (Console.ReadLine()?.Trim().ToLower() == "s");
+          Console.Clear(); // Limpiar la pantalla antes de salir de la función
+    }
+     static bool EsPrimo(int numero)
+    {
+        if (numero <= 1)
+            return false;
+        if (numero <= 3)
+            return true;
+        if (numero % 2 == 0 || numero % 3 == 0)
+            return false;
+        for (int i = 5; i * i <= numero; i += 6)
+        {
+            if (numero % i == 0 || numero % (i + 2) == 0)
+                return false;
+        }
+        return true;
+    }
+    static double FactorialDe(double numero)
+    {
+        if (numero == 0)
+            return 1;
+        double factorial = 1;
+        for (int i = 1; i <= numero; i++)
+        {
+            factorial *= i;
+        }
+        return factorial;
+    }
+ static void Fibonacci()
+    {
+        do
+        {
+            Console.Clear(); // Limpiar la pantalla
+            Console.Write("Ingrese la cantidad de interaciones para la sucesión de Fibonacci: ");
+            string? input = Console.ReadLine();
+            if (!string.IsNullOrEmpty(input) && int.TryParse(input, out int iteraciones) && iteraciones > 0)
+            {
+                int a = 0, b = 1;
+                Console.Write("Sucesión de Fibonacci: ");
+                for (int i = 0; i < iteraciones; i++)
+                {
+                    Console.Write(a + " ");
+                    int temp = a;
+                    a = b;
+                    b = temp + b;
+                }
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Entrada no válida. ingrese un número entero positivo mayor que 0.");
+            }
+
+            Console.Write("¿Desea generar otra sucesión de Fibonacci? (s/n): ");
+        } while (Console.ReadLine()?.Trim().ToLower() == "s");
+
+        Console.Clear(); // Limpiar la pantalla antes de salir de la función
